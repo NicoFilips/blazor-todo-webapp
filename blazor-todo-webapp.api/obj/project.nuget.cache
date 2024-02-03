@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "V5I3iFdNeC0g4nyfUpGiWf0d1jNdIVRSRXqi9grecIglebbLOeJg26BKykzyYOOk5UZbtNzcRaKFF8yFxM1WCg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\busin\\source\\repos\\blazor-todo-webapp\\blazor-todo-webapp.api\\blazor-todo-webapp.api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\busin\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.0\\microsoft.dotnet.ilcompiler.8.0.0.nupkg.sha512",
+    "C:\\Users\\busin\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
+    "C:\\Users\\busin\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.0\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

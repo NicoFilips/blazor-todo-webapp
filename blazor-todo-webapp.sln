@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazor-todo-webapp.ssr", "blazor-todo-webapp.ssr\blazor-todo-webapp.ssr.csproj", "{8F77EC98-D3D4-4DEF-92DB-6BA13C405AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazor-todo-webapp.wasm", "blazor-todo-webapp.wasm\blazor-todo-webapp.wasm.csproj", "{DF5C323A-54DF-48BF-A515-20446237D4CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazor-todo-webapp.rcl", "blazor-todo-webapp.rcl\blazor-todo-webapp.rcl.csproj", "{3FF30BBA-4C61-46CA-AED4-DA638E8779A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazor-todo-webapp.api", "blazor-todo-webapp.api\blazor-todo-webapp.api.csproj", "{FCC75DB4-F0C8-4A4D-801A-45CC589EF86F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F77EC98-D3D4-4DEF-92DB-6BA13C405AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F77EC98-D3D4-4DEF-92DB-6BA13C405AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F77EC98-D3D4-4DEF-92DB-6BA13C405AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F77EC98-D3D4-4DEF-92DB-6BA13C405AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF5C323A-54DF-48BF-A515-20446237D4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF5C323A-54DF-48BF-A515-20446237D4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF5C323A-54DF-48BF-A515-20446237D4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5C323A-54DF-48BF-A515-20446237D4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF30BBA-4C61-46CA-AED4-DA638E8779A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF30BBA-4C61-46CA-AED4-DA638E8779A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF30BBA-4C61-46CA-AED4-DA638E8779A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF30BBA-4C61-46CA-AED4-DA638E8779A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC75DB4-F0C8-4A4D-801A-45CC589EF86F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC75DB4-F0C8-4A4D-801A-45CC589EF86F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC75DB4-F0C8-4A4D-801A-45CC589EF86F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC75DB4-F0C8-4A4D-801A-45CC589EF86F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

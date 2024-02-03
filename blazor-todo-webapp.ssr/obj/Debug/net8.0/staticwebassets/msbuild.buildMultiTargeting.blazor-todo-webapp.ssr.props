@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\blazor-todo-webapp.ssr.props" />
+</Project>
