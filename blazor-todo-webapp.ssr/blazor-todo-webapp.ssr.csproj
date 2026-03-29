@@ -4,12 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>blazor-todo-webapp</RootNamespace>
-        <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+        <RootNamespace>blazor_todo_webapp</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\blazor-todo-webapp.rcl\blazor-todo-webapp.rcl.csproj" />
-    </ItemGroup>
 
 </Project>

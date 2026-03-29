@@ -1,0 +1,143 @@
+@page "/todos"
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpClientFactory
+
+<PageTitle>Todos</PageTitle>
+
+<div class="card">
+    <h1 class="page-heading">My Todos</h1>
+
+    <div class="todo-input-group">
+        <input placeholder="What needs to be done?"
+               @bind="newTodoTitle" @bind:event="oninput"
+               @onkeydown="HandleKeyDown" />
+        <button class="btn-add" @onclick="AddTodo" disabled="@string.IsNullOrWhiteSpace(newTodoTitle)">
+            Add
+        </button>
+    </div>
+
+    @if (todos is null)
+    {
+        <div class="loading">Loading todos...</div>
+    }
+    else if (!todos.Any())
+    {
+        <div class="empty-state">
+            <div class="empty-icon">~</div>
+            <p>No todos yet — add one above!</p>
+        </div>
+    }
+    else
+    {
+        <div class="todo-stats">
+            <span class="stat">@todos.Count(t => !t.IsComplete) remaining</span>
+            <span class="stat">@todos.Count(t => t.IsComplete) done</span>
+        </div>
+
+        <ul class="todo-list">
+            @foreach (var todo in todos)
+            {
+                <li class="todo-item @(todo.IsComplete ? "completed" : "")">
+                    <input type="checkbox" checked="@todo.IsComplete"
+                           @onchange="() => ToggleComplete(todo)" />
+                    <span class="todo-title">@todo.Title</span>
+                    <button class="btn-delete" @onclick="() => DeleteTodo(todo.Id)">delete</button>
+                </li>
+            }
+        </ul>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert-error">@errorMessage</div>
+    }
+</div>
+
+@code {
+    private List<TodoItem>? todos;
+    private string newTodoTitle = string.Empty;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadTodos();
+    }
+
+    private async Task LoadTodos()
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("TodoApi");
+            todos = await client.GetFromJsonAsync<List<TodoItem>>("/api/todos");
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to load todos. Make sure the API is running on port 5220. ({ex.Message})";
+        }
+    }
+
+    private async Task AddTodo()
+    {
+        if (string.IsNullOrWhiteSpace(newTodoTitle)) return;
+
+        try
+        {
+            var client = HttpClientFactory.CreateClient("TodoApi");
+            var todo = new TodoItem { Title = newTodoTitle.Trim() };
+            var response = await client.PostAsJsonAsync("/api/todos", todo);
+            response.EnsureSuccessStatusCode();
+            newTodoTitle = string.Empty;
+            await LoadTodos();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to add todo. ({ex.Message})";
+        }
+    }
+
+    private async Task ToggleComplete(TodoItem todo)
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("TodoApi");
+            todo.IsComplete = !todo.IsComplete;
+            await client.PutAsJsonAsync($"/api/todos/{todo.Id}", todo);
+            await LoadTodos();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to update todo. ({ex.Message})";
+        }
+    }
+
+    private async Task DeleteTodo(int id)
+    {
+        try
+        {
+            var client = HttpClientFactory.CreateClient("TodoApi");
+            await client.DeleteAsync($"/api/todos/{id}");
+            await LoadTodos();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to delete todo. ({ex.Message})";
+        }
+    }
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await AddTodo();
+        }
+    }
+
+    private class TodoItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public bool IsComplete { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+}

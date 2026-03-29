@@ -1,27 +1,9 @@
-﻿namespace blazor_todo_webapp.api.Model;
+namespace blazor_todo_webapp.api.Model;
 
-public class Cache
+public class Todo
 {
-    public static List<Todo> _todos = new();
-}
-
-public class Todo : IDisposable
-{
-    public Todo(int id, string? title)
-    {
-        Title = title;
-        Id = id;
-        CreateDate = DateTime.Now;
-    }
-
-    public string? Title { get; init; }
-
-    public int Id { get; init; }
-
-    public DateTime? CreateDate { get; init; }
-
-    public void Dispose()
-    {
-        GC.SuppressFinalize(this);
-    }
+    public int Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public bool IsComplete { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
